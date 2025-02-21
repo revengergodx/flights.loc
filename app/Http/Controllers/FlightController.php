@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\Flight\StoreRequest;
+use App\Http\Requests\Admin\Flight\UpdateRequest;
 use App\Models\Airport;
 use App\Models\Flight;
 use Illuminate\Http\Request;
@@ -28,19 +29,22 @@ class FlightController extends Controller
         return redirect()->route('flights.index');
     }
 
-    public function edit()
+    public function edit(Flight $flight)
     {
-
+        $airports = Airport::all();
+        return view('pages.admin.flights.edit', compact('flight', 'airports'));
     }
 
-    public function update()
+    public function update(Flight $flight, UpdateRequest $request)
     {
-
+        $flight->update($request->validated());
+        return redirect()->route('flights.index');
     }
 
-    public function delete()
+    public function delete(Flight $flight)
     {
-        return 1111;
+        $flight->delete();
+        return redirect()->route('flights.index');
     }
 
     public function search(Request $request)
