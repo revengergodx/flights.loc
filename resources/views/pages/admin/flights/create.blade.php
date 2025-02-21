@@ -67,6 +67,9 @@
                 <label for="available_seats" class="block text-sm font-medium text-gray-700">Available Seats</label>
                 <input type="number" id="available_seats" name="available_seats" value="{{ old('available_seats') }}"
                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                @error('available_seats')
+                <div class="text-red-700">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="price" class="block text-sm font-medium text-gray-700">Price</label>

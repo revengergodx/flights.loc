@@ -22,9 +22,9 @@ Route::controller(FlightController::class)->prefix('flights')->as('flights.')->g
     Route::get('/','index')->name('index');
     Route::get('/create','create')->name('create');
     Route::POST('/create','store')->name('store');
-    Route::get('/{id}/edit','edit')->name('edit');
-    Route::POST('/{id}/edit','update')->name('update');
-    Route::delete('/{id}','delete')->name('delete');
+    Route::get('/{flight}/edit','edit')->name('edit');
+    Route::PATCH('/{flight}/edit','update')->name('update');
+    Route::delete('/{flight}','delete')->name('delete');
 });
 
 Route::get('/booking/{flight}', [BookingController::class, 'show'])->name('booking');

@@ -82,8 +82,8 @@
             </nav>
         @else
             <div>
-                <a href="{{ route('login') }}" class="text-gray-700 px-4 py-2">Увійти</a>
-                <a href="{{ route('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Реєстрація</a>
+                <a href="{{ route('login') }}" class="text-gray-700 px-4 py-2">Login</a>
+                <a href="{{ route('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Register</a>
             </div>
         @endauth
     </div>

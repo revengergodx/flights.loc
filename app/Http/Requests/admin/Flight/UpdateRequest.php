@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Admin\Flight;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +24,11 @@ class StoreRequest extends FormRequest
     {
         return [
             'airline' => 'required|string',
-            'flight_number' => 'required|string|unique:flights',
+            'flight_number' => [
+                'required',
+                'string',
+                Rule::unique('flights', 'flight_number')->ignore($this->flight, 'flight_number')
+            ],
             'departure_airport_id' => 'required|exists:airports,id',
             'arrival_airport_id' => 'required|exists:airports,id',
             'departure_time' => 'required|date',
